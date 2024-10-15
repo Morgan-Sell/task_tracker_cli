@@ -1,7 +1,10 @@
 
+import pytest
+from src.config import USER_COMMANDS
 from src.cli import (
     parse_cli_input,
     is_integer,
+    is_user_command_valid
 )
 
 
@@ -33,3 +36,14 @@ def test_is_integer():
 
     # case 2: string
     assert is_integer("integer") == False
+
+
+def test_is_command_valid_raises_error():
+    commands_str = ", ".join(USER_COMMANDS)
+    
+    with pytest.raises(ValueError) as exc_info:
+        is_user_command_valid("GO!")
+    
+ 
+    expected_result = f"Invalid command. User entered GO!. Acceptable commands are {commands_str}."
+    assert str(exc_info.value) == expected_result
