@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, Union
 from src.task import Task
 from datetime import datetime
 import json
@@ -26,3 +26,9 @@ def parse_cli_input(cli_input: str) -> list:
     return result
 
 
+def is_integer(element: Union[int, str]) -> bool:
+    try:
+        int(element)
+        return True
+    except ValueError:
+        return False

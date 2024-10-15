@@ -1,9 +1,8 @@
 
-
-
-
-
-from src.cli import parse_cli_input
+from src.cli import (
+    parse_cli_input,
+    is_integer,
+)
 
 
 def test_parse_cli_input():
@@ -26,3 +25,11 @@ def test_parse_cli_input():
     cli_input = 'list'
     res = parse_cli_input(cli_input)
     assert res == ["list"]
+
+
+def test_is_integer():
+    # case 1: integer
+    assert is_integer(42) == True
+
+    # case 2: string
+    assert is_integer("integer") == False
