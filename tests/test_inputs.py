@@ -3,7 +3,7 @@ import os
 from tempfile import TemporaryDirectory
 import pytest
 
-from src.inputs import add_task
+from src.inputs import add_task, find_task
 
 
 def test_add_task_success():
@@ -28,3 +28,13 @@ def test_add_task_success():
             assert data["id"] == 1
             assert data["description"] == "Change my bike tires"
             assert data["status"] == "todo"
+
+
+def test_find_task_success(sample_tasks):
+    
+    task = find_task(task_id=3, tasks=sample_tasks)
+
+    assert task["description"] == "Prepare for meeting"
+    assert task["status"] == "completed"
+    assert task["created_at"] == "2024-10-12 09:15:00"
+    assert task["updated_at"] == "2024-10-13 18:00:00"

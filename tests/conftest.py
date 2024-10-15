@@ -1,7 +1,7 @@
 import pytest
 
 
-pytest.fixture(session="function")
+@pytest.fixture(scope="function")
 def sample_tasks():
     tasks = [
         {
