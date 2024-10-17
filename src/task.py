@@ -1,5 +1,8 @@
-from typing import Dict
+from typing import Dict, List
 from datetime import datetime
+import json
+
+from src.storage import read_json, save_data_to_json
 
 
 class Task:
@@ -47,9 +50,10 @@ def add_task(task_id: int, task_desc: str, filename: str) -> None:
         created_at=datetime.now(),
         updated_at=datetime.now()
     )
-    with open(filename, "w") as json_file:
-        json.dump(task.to_dict(), json_file, indent=4)
     
+    data = read_json(filename)
+    data.append(task.to_dict())
+    save_data_to_json(data, filename)
 
 
 def find_task(task_id: int, tasks: Dict) -> Dict:   
@@ -59,3 +63,16 @@ def find_task(task_id: int, tasks: Dict) -> Dict:
     raise ValueError(
         f"Task # {task_id} does not exist."
     )
+
+
+def update_task(tasks: List, task_id: int, new_description: str) -> Dict:
+    try:
+        for task in tasks:
+            if task["id"] == task_id:
+                task["description"] = new_description
+    except:
+        raise ValueError(
+            f"Task # {task_id} does not exist."
+        )
+
+    return tasks

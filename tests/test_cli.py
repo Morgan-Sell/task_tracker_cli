@@ -1,7 +1,7 @@
 
 import pytest
 from src.config import USER_COMMANDS
-from src.cli import (
+from src.operations import (
     parse_cli_input,
     is_integer,
     is_user_command_valid

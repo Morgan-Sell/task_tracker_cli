@@ -1,6 +1,6 @@
 from typing import Dict, Union
-from .config import USER_COMMANDS
-from .task import Task
+from src.config import USER_COMMANDS
+from src.task import Task
 from datetime import datetime
 import json
 
@@ -42,4 +42,3 @@ def is_user_command_valid(command: str) -> ValueError:
             f"Invalid command. User entered {command}. "
             f"Acceptable commands are {commands_str}."
         )
-    
