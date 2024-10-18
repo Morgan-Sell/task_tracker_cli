@@ -66,13 +66,12 @@ def find_task(task_id: int, tasks: Dict) -> Dict:
 
 
 def update_task(tasks: List, task_id: int, new_description: str) -> Dict:
-    try:
-        for task in tasks:
-            if task["id"] == task_id:
-                task["description"] = new_description
-    except:
-        raise ValueError(
-            f"Task # {task_id} does not exist."
-        )
+    # try:
+    for task in tasks:
+        if task["id"] == task_id:
+            task["description"] = new_description
+            task["updated_at"] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            return tasks
+    
+    raise ValueError(f"Task # {task_id} does not exist.")
 
-    return tasks

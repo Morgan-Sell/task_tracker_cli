@@ -1,7 +1,23 @@
-{
-    "id": 3,
-    "description": "buy plane tickets",
-    "status": "todo",
-    "created_at": "2024-10-15 18:31:51",
-    "updated_at": "2024-10-15 18:31:51"
-}
+[
+    {
+        "id": 1,
+        "description": "Build ski resort",
+        "status": "todo",
+        "created_at": "2024-10-17 17:53:11",
+        "updated_at": "2024-10-17 17:53:11"
+    },
+    {
+        "id": 2,
+        "description": "Get hair implants",
+        "status": "todo",
+        "created_at": "2024-10-17 17:53:23",
+        "updated_at": "2024-10-17 17:53:23"
+    },
+    {
+        "id": 3,
+        "description": "Buy a new surfboard",
+        "status": "todo",
+        "created_at": "2024-10-17 17:53:32",
+        "updated_at": "2024-10-17 17:53:32"
+    }
+]

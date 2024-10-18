@@ -100,14 +100,20 @@ def test_update_task_success(sample_tasks):
     new_description = "Go fishing!"
     tasks_updated = update_task(tasks, task_id, new_description)
 
-    # Check results
-    expected_results = {
-            "id": 5,
-            "description": "Go fishing!",
-            "status": "in-progress",
-            "created_at": "2024-10-13 17:30:00",
-            "updated_at": "2024-10-14 07:00:00"
-        }
-    
-    assert expected_results == tasks_updated[4]
-    
+
+    # Format to remove time
+    expected_updated_at = datetime.now().date().strftime('%Y-%m-%d')
+    new_updated_at = datetime.strptime(
+        tasks_updated[4]["updated_at"], "%Y-%m-%d %H:%M:%S"
+    ).strftime("%Y-%m-%d")
+
+    # Prepare expected results
+    assert tasks_updated[4]["description"] == new_description
+    assert new_updated_at == expected_updated_at
+
+@pytest.mark.parametrize(
+    "errors", [0, 10, "integer"]
+)
+def test_update_task_raises_error(errors, sample_tasks):
+    with pytest.raises(ValueError):
+        update_task(sample_tasks, errors, "Fly to the moon!")

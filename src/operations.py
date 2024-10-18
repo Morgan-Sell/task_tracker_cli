@@ -1,4 +1,4 @@
-from typing import Dict, Union
+from typing import Any, Dict, Union
 from src.config import USER_COMMANDS
 from src.task import Task
 from datetime import datetime
@@ -41,4 +41,11 @@ def is_user_command_valid(command: str) -> ValueError:
         raise ValueError(
             f"Invalid command. User entered {command}. "
             f"Acceptable commands are {commands_str}."
+        )
+
+
+def is_task_id_valid(task_id: int, task_counter: int) -> Warning:
+    if not isinstance(task_id, int) or task_id < 1 or task_id > task_counter:
+        raise ValueError(
+            f"Invalid task ID. Received {task_id}."
         )
