@@ -1,6 +1,6 @@
 import os
 from src.operations import is_task_id_valid, is_user_command_valid, parse_cli_input
-from src.task import add_task, update_task_description, update_task_status
+from src.task import add_task, list_tasks_based_on_status, update_task_description, update_task_status
 from src.storage import clean_json, read_json, save_data_to_json
 
 
@@ -74,6 +74,12 @@ def main() -> None:
             # subtract 1 to get the index for the task ID
             del user_tasks[task_id-1]
             save_data_to_json(user_tasks, file_path)
+        
+        # user wants to display tasks based on status
+        else:
+            task_status = parsed_input[1]
+            list_tasks_based_on_status(user_tasks, task_status)
+    
 
 if __name__ == "__main__":
     main()
