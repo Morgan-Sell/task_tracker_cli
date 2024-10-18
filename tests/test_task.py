@@ -6,7 +6,7 @@ import numpy as np
 import time
 from datetime import datetime
 
-from src.task import add_task, find_task, update_task
+from src.task import add_task, find_task, update_task_description, update_task_status
 from src.storage import read_json
 
 
@@ -93,12 +93,12 @@ def test_find_task_success(sample_tasks):
     assert task["updated_at"] == "2024-10-13 18:00:00"
 
 
-def test_update_task_success(sample_tasks):
+def test_update_task_description_success(sample_tasks):
     # prepare for test
     tasks = sample_tasks
     task_id = 5
     new_description = "Go fishing!"
-    tasks_updated = update_task(tasks, task_id, new_description)
+    tasks_updated = update_task_description(tasks, task_id, new_description)
 
 
     # Format to remove time
@@ -111,9 +111,57 @@ def test_update_task_success(sample_tasks):
     assert tasks_updated[4]["description"] == new_description
     assert new_updated_at == expected_updated_at
 
+
 @pytest.mark.parametrize(
     "errors", [0, 10, "integer"]
 )
-def test_update_task_raises_error(errors, sample_tasks):
+def test_update_task_description_raises_error(errors, sample_tasks):
     with pytest.raises(ValueError):
-        update_task(sample_tasks, errors, "Fly to the moon!")
+        update_task_description(sample_tasks, errors, "Fly to the moon!")
+
+
+def test_update_task_status_success(sample_tasks):
+    tasks = sample_tasks
+
+    # change tasks' status
+    updated_tasks = update_task_status(tasks, 2, "done")
+    results = update_task_status(updated_tasks, 4, "in-progress")
+
+    # prepare results
+    expected_task_2 = {
+            "id": 2,
+            "description": "Complete Python project",
+            "status": "done",
+            "created_at": "2024-10-13 14:45:00",
+            "updated_at": datetime.now().date().strftime('%Y-%m-%d')
+        }
+    expected_task_4 = {
+            "id": 4,
+            "description": "Read new book",
+            "status": "in-progress",
+            "created_at": "2024-10-14 08:00:00",
+            "updated_at": datetime.now().date().strftime('%Y-%m-%d')
+        }
+    
+    # prepare responses
+    task_2_results = results[1]
+    task_2_results["updated_at"] = datetime.strptime(
+        task_2_results["updated_at"], "%Y-%m-%d %H:%M:%S"
+    ).strftime('%Y-%m-%d')
+
+    task_4_results = results[3]
+    task_4_results["updated_at"] = datetime.strptime(
+        task_4_results["updated_at"], "%Y-%m-%d %H:%M:%S"
+    ).strftime('%Y-%m-%d')
+
+    # Check results
+    assert expected_task_2 == task_2_results
+    assert expected_task_4 == task_4_results
+
+
+@pytest.mark.parametrize(
+    "errors", [0, 10, "integer"]
+)
+def test_update_task_status_raises_error(errors, sample_tasks):
+    with pytest.raises(ValueError):
+        update_task_description(sample_tasks, errors, "Fly to the moon!")

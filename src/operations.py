@@ -44,7 +44,7 @@ def is_user_command_valid(command: str) -> ValueError:
         )
 
 
-def is_task_id_valid(task_id: int, task_counter: int) -> Warning:
+def is_task_id_valid(task_id: int, task_counter: int) -> None:
     if not isinstance(task_id, int) or task_id < 1 or task_id > task_counter:
         raise ValueError(
             f"Invalid task ID. Received {task_id}."

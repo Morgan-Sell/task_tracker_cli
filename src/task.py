@@ -65,8 +65,7 @@ def find_task(task_id: int, tasks: Dict) -> Dict:
     )
 
 
-def update_task(tasks: List, task_id: int, new_description: str) -> Dict:
-    # try:
+def update_task_description(tasks: List, task_id: int, new_description: str) -> Dict:
     for task in tasks:
         if task["id"] == task_id:
             task["description"] = new_description
@@ -75,3 +74,12 @@ def update_task(tasks: List, task_id: int, new_description: str) -> Dict:
     
     raise ValueError(f"Task # {task_id} does not exist.")
 
+
+def update_task_status(tasks: List, task_id: int, new_status: str) -> Dict:
+    for task in tasks:
+        if task["id"] == task_id:
+            task["status"] = new_status
+            task["updated_at"] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            return tasks
+    
+    raise ValueError(f"Task # {task_id} does not exist.")

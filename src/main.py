@@ -1,6 +1,6 @@
 import os
 from src.operations import is_task_id_valid, is_user_command_valid, parse_cli_input
-from src.task import add_task, update_task
+from src.task import add_task, update_task_description
 from src.storage import clean_json, read_json, save_data_to_json
 
 
@@ -23,8 +23,6 @@ def main() -> None:
         # process data
         parsed_input = parse_cli_input(user_input)
         user_command = parsed_input[0].lower()
-
-
 
         # confirm command is valid
         is_user_command_valid(user_command)
@@ -49,17 +47,18 @@ def main() -> None:
                 description = parsed_input[2]
         
                 # update tasks and save changes
-                user_tasks_updated = update_task(user_tasks, task_id, description)
+                user_tasks_updated = update_task_description(user_tasks, task_id, description)
                 save_data_to_json(user_tasks_updated, file_path)
 
             except ValueError as e:
                 print("\n" f"Error: {e}")
             
-            print(
-                "If you would like to update a task, enter an integer equal " \
-                f"to or less than {task_counter-1}.\n"
-            )
-
+                print(
+                    "If you would like to update a task, enter an integer equal " \
+                    f"to or less than {task_counter-1}.\n"
+                )
+        elif user_command == "mark-in-progress":
+            pass
 
 if __name__ == "__main__":
     main()
