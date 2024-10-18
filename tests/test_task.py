@@ -6,7 +6,7 @@ import numpy as np
 import time
 from datetime import datetime
 
-from src.task import add_task, find_task, update_task_description, update_task_status
+from src.task import add_task, update_task_description, update_task_status
 from src.storage import read_json
 
 
@@ -76,21 +76,6 @@ def test_add_task_with_existing_data(tmp_path, sample_tasks):
     created_date = datetime.strptime(json_results[1]["created_at"], "%Y-%m-%d %H:%M:%S")
     created_date = created_date.strftime("%Y-%m-%d")
     assert created_date == current_date
-    
-    
-    # assert time.strftime(
-    #     "%Y-%m-%d", json_results[1]["updated_at"]
-    #  ) == current_date
-
-
-def test_find_task_success(sample_tasks):
-    
-    task = find_task(task_id=3, tasks=sample_tasks)
-
-    assert task["description"] == "Prepare for meeting"
-    assert task["status"] == "completed"
-    assert task["created_at"] == "2024-10-12 09:15:00"
-    assert task["updated_at"] == "2024-10-13 18:00:00"
 
 
 def test_update_task_description_success(sample_tasks):
