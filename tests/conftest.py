@@ -21,7 +21,7 @@ def sample_tasks():
         {
             "id": 3,
             "description": "Prepare for meeting",
-            "status": "completed",
+            "status": "done",
             "created_at": "2024-10-12 09:15:00",
             "updated_at": "2024-10-13 18:00:00"
         },

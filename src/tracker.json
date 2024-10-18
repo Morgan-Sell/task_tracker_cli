@@ -1,23 +1,23 @@
 [
     {
-        "id": 1,
-        "description": "Build ski resort",
-        "status": "todo",
-        "created_at": "2024-10-17 17:53:11",
-        "updated_at": "2024-10-17 17:53:11"
-    },
-    {
-        "id": 2,
-        "description": "Get hair implants",
-        "status": "todo",
-        "created_at": "2024-10-17 17:53:23",
-        "updated_at": "2024-10-17 17:53:23"
-    },
-    {
         "id": 3,
-        "description": "Buy a new surfboard",
+        "description": "Measure furniture",
         "status": "todo",
-        "created_at": "2024-10-17 17:53:32",
-        "updated_at": "2024-10-17 17:53:32"
+        "created_at": "2024-10-18 09:29:02",
+        "updated_at": "2024-10-18 09:29:02"
+    },
+    {
+        "id": 4,
+        "description": "Do laundry",
+        "status": "in-progress",
+        "created_at": "2024-10-18 09:29:14",
+        "updated_at": "2024-10-18 09:29:37"
+    },
+    {
+        "id": 5,
+        "description": "Buy renter's insurance",
+        "status": "todo",
+        "created_at": "2024-10-18 09:30:20",
+        "updated_at": "2024-10-18 09:30:20"
     }
 ]
