@@ -2,6 +2,8 @@
 
 A command-line interface (CLI) application for managing and tracking tasks. This application allows users to add, update, and manage tasks with statuses like "To Do," "In Progress," and "Done." It stores task data in a JSON file, providing an easy and lightweight solution for task tracking.
 
+[View the Project Page](https://github.com/Morgan-Sell/task_tracker_cli)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -56,7 +58,7 @@ Once the CLI starts, you can perform the following operations:
     $ Your Task Tracker: add "Send a birthday card to mom"
     $ Your Task Tarcker: add "Buy one-way ticket to Tasmania"
 
-    # modify task status
+    # modify task
     $ Your Task Tracker: mark-done 3
     $ Your Task Tracker: mark-in-progress 2
     $ Your Task Tracker: update 1 "Fix boat motor"
@@ -118,6 +120,8 @@ Ensure all dependencies are listed in `requirements.txt` and installed using:
 ```
     pip install -r requirements.txt
 ```
+
+Project page URL: https://github.com/Morgan-Sell/task_tracker_cli
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
