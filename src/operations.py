@@ -35,7 +35,7 @@ def parse_cli_input(cli_input: str) -> list:
 
 
 def is_integer(element: Union[int, str]) -> bool:
-   """
+    """
     Checks if the given element can be converted to an integer.
 
     Args:

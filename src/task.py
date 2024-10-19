@@ -96,7 +96,7 @@ def update_task_description(tasks: List[Dict], task_id: int, new_description: st
 
 
 def update_task_status(tasks: List, task_id: int, new_status: str) -> List[Dict]:
-   """
+    """
     Updates the status of a task by its ID and updates the timestamp.
 
     Args:
@@ -110,8 +110,6 @@ def update_task_status(tasks: List, task_id: int, new_status: str) -> List[Dict]
     Raises:
         ValueError: If the task with the given ID does not exist.
     """
-
-
     for task in tasks:
         if task["id"] == task_id:
             task["status"] = new_status
