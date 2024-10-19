@@ -1,5 +1,4 @@
 [build-system]
-# A list of packages that are needed to build your package:
 requires = ["setuptools"]  # REQUIRED if [build-system] table is used
 # The name of the Python object that frontends will use to perform the build:
 build-backend = "setuptools.build_meta"  # If not defined, then legacy behavior can happen.
@@ -7,16 +6,12 @@ build-backend = "setuptools.build_meta"  # If not defined, then legacy behavior 
 
 [project]
 name = "task_tracker"  
-version = "0.0.0"  # REQUIRED, although can be dynamic
+version = "0.0.0"  
 description = "A task tracker CLI application"
 readme = "README.md"
 requires-python = ">=3.8"
 license = {file = "LICENSE.txt"}
 keywords = ["python", "cli"]
-
-# This should be your name or the name of the organization who originally
-# authored the project, and a valid email address corresponding to the name
-# listed.
 authors = [
   {name = "Morgan Sell", email = "morganpsell@gmail.com" }
 ]
@@ -29,3 +24,35 @@ classifiers = [
 
 [tool.pytest.ini_options]
 testpaths = ["."]
+
+[tool.ruff]
+line-length = 88 # match black's line length
+# E: Enforces pycodestyle error codes (like PEP 8).
+# F: Runs pyflakes for identifying unused imports and variables.
+# B: Runs flake8-bugbear for finding potential bugs.
+# W:
+select = ["E", "F", "W", "B"] 
+# W503: ignore line break before binary operators 
+# E501: ignore line length (handled by black)
+ignore = ["W503", "E501"] 
+fix = false # black handles it
+exclude = ["tests/"]
+
+[tool.black]
+line-length = 88 # Standard PEP8 line length
+target-version = ["py311"]
+skip-string-normalization = false # If true, black won't normalize quotes
+
+[tool.isort]
+profile = "black" # Use black's import sorting style
+line_length = 88
+know_third_party = ["pytest"]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true # Surpresses warnings for missing type hints for third-party libraries
+strict = true # Enable thorough type checking
+show_column_numbers = true
+show_error_codes = true
+warn_unused_ignores = true
+exclude = "tests/"
