@@ -45,7 +45,7 @@ skip-string-normalization = false # If true, black won't normalize quotes
 [tool.isort]
 profile = "black" # Use black's import sorting style
 line_length = 88
-know_third_party = ["pytest"]
+known_third_party = ["pytest"]
 
 [tool.mypy]
 python_version = "3.11"
