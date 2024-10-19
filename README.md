@@ -2,8 +2,6 @@
 
 A command-line interface (CLI) application for managing and tracking tasks. This application allows users to add, update, and manage tasks with statuses like "To Do," "In Progress," and "Done." It stores task data in a JSON file, providing an easy and lightweight solution for task tracking.
 
-[View the Project Page](https://github.com/Morgan-Sell/task_tracker_cli)
-
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -13,6 +11,7 @@ A command-line interface (CLI) application for managing and tracking tasks. This
 - [Configuration](#configuration)
 - [Dependencies](#dependencies)
 - [License](#license)
+- [Acknowledgement](#acknowledgement)
 
 ## Introduction
 
@@ -125,3 +124,6 @@ Project page URL: https://github.com/Morgan-Sell/task_tracker_cli
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Acknowledgement
+This application was built following the design developed by [roadmap.sh's Task Tracker project](https://roadmap.sh/projects/task-tracker).
