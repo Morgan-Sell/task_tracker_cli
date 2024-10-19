@@ -55,3 +55,4 @@ show_column_numbers = true
 show_error_codes = true
 warn_unused_ignores = true
 exclude = "tests/"
+allow_untyped_globals = true

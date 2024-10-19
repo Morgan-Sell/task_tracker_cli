@@ -1,9 +1,11 @@
-from typing import Any, Dict, Union
+from typing import Union
+
 from src.config import USER_COMMANDS
 
-def parse_cli_input(cli_input: str) -> list:
+
+def parse_cli_input(cli_input: str) -> list[str]:
     """
-    Parses a CLI input string into a list of arguments, handling 
+    Parses a CLI input string into a list of arguments, handling
     quoted strings as single elements.
 
     Args:
@@ -12,25 +14,25 @@ def parse_cli_input(cli_input: str) -> list:
     Returns:
         list: A list of parsed elements from the input string.
     """
-    
+
     result = []
-    current_element = []
+    current_element: list[str] = []
     in_quotes = False
 
     for char in cli_input:
         if char == '"':
             in_quotes = not in_quotes
-        elif char == ' ' and in_quotes is False:
+        elif char == " " and in_quotes is False:
             if len(current_element) > 0:
-                result.append("". join(current_element))
+                result.append("".join(current_element))
                 current_element = []
         else:
             current_element.append(char)
-    
+
     # append the last element
     if len(current_element) > 0:
-        result.append(''.join(current_element))
-    
+        result.append("".join(current_element))
+
     return result
 
 
@@ -80,8 +82,6 @@ def is_task_id_valid(task_id: int, task_counter: int) -> None:
     Raises:
         ValueError: If the task ID is not valid.
     """
-    
+
     if not isinstance(task_id, int) or task_id < 1 or task_id > task_counter:
-        raise ValueError(
-            f"Invalid task ID. Received {task_id}."
-        )
+        raise ValueError(f"Invalid task ID. Received {task_id}.")

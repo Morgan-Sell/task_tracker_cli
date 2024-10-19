@@ -1,14 +1,5 @@
-import os
-from pathlib import Path
-from typing import Any, Dict, List, Union
-
-
 # global constants
-STATUS_TYPES = [
-    "todo",
-    "in-progress",
-    "done"
-]
+STATUS_TYPES = ["todo", "in-progress", "done"]
 
 USER_COMMANDS = [
     "add",
@@ -16,12 +7,12 @@ USER_COMMANDS = [
     "delete",
     "mark-in-progress",
     "mark-done",
-    "list",    
+    "list",
 ]
 
 USER_COMMANDS_WITH_ID = [
     "update",
     "delete",
     "mark-in-progress",
-    "mark-done",  
+    "mark-done",
 ]

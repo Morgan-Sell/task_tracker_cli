@@ -1,6 +1,5 @@
-from typing import Dict, List
 from datetime import datetime
-import json
+from typing import Dict, List
 
 from src.storage import read_json, save_data_to_json
 
@@ -16,13 +15,14 @@ class Task:
         created_at (str): The timestamp when the task was created.
         updated_at (str): The timestamp when the task was last updated.
     """
+
     def __init__(
         self,
         id: int,
         description: str,
         status: str,
-        created_at: str,
-        updated_at: str
+        created_at: datetime,
+        updated_at: datetime,
     ):
         self.id = id
         self.description = description
@@ -41,8 +41,8 @@ class Task:
             "id": self.id,
             "description": self.description,
             "status": self.status,
-            "created_at": self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
-            "updated_at": self.updated_at.strftime('%Y-%m-%d %H:%M:%S'),
+            "created_at": self.created_at.strftime("%Y-%m-%d %H:%M:%S"),
+            "updated_at": self.updated_at.strftime("%Y-%m-%d %H:%M:%S"),
         }
 
 
@@ -64,14 +64,17 @@ def add_task(task_id: int, task_desc: str, filename: str) -> None:
         description=task_desc,
         status="todo",
         created_at=datetime.now(),
-        updated_at=datetime.now()
+        updated_at=datetime.now(),
     )
-    
+
     data = read_json(filename)
     data.append(task.to_dict())
     save_data_to_json(data, filename)
 
-def update_task_description(tasks: List[Dict], task_id: int, new_description: str) -> List[Dict]:
+
+def update_task_description(
+    tasks: List[Dict], task_id: int, new_description: str
+) -> List[Dict]:
     """
     Updates the description of a task by its ID and updates the timestamp.
 
@@ -89,9 +92,9 @@ def update_task_description(tasks: List[Dict], task_id: int, new_description: st
     for task in tasks:
         if task["id"] == task_id:
             task["description"] = new_description
-            task["updated_at"] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            task["updated_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             return tasks
-    
+
     raise ValueError(f"Task # {task_id} does not exist.")
 
 
@@ -113,9 +116,9 @@ def update_task_status(tasks: List, task_id: int, new_status: str) -> List[Dict]
     for task in tasks:
         if task["id"] == task_id:
             task["status"] = new_status
-            task["updated_at"] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            task["updated_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             return tasks
-    
+
     raise ValueError(f"Task # {task_id} does not exist.")
 
 
