@@ -8,10 +8,9 @@ A command-line interface (CLI) application for managing and tracking tasks. This
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Installation](#installation)
-  - [Usage](#usage)
-    - [Example](#example)
   - [Features](#features)
   - [Configuration](#configuration)
+  - [Dependencies](#dependencies)
 
 ## Introduction
 
@@ -47,7 +46,7 @@ Once the CLI starts, you can perform the following operations:
 
 ### Example
 
-    ```bash
+```
     # run application
     $ ./run.sh
 
@@ -73,11 +72,11 @@ Once the CLI starts, you can perform the following operations:
     $ Created At: 2024-10-19 09:55:00
     $ Updated At: 2024-10-19 09:56:52
     $ ----------------------------------------
-    ```
+```
     
 ## Features
 - Task Management: Add, update, and delete tasks.
-- Status Tracking: Each task has a status—To Do, In Progress, or Done.
+- Status Tracking: Each task has a status - `todo`, `in-progress`, or `done`.
 - JSON Storage: Task data is stored in a simple JSON format for easy access.
 - Command-line Interface: User-friendly CLI for quick interaction with task data.
 
@@ -89,3 +88,32 @@ The application uses a `tracker.json` file to store tasks. The tasks include det
 - `status`: The current status of the task (todo, in-progress, or done).
 - `created_at`: Timestamp indicating task creation.
 - `updated_at`: Timestamp indicating last update times.
+
+Example `tracker.json`:
+
+    
+    [
+        {
+            "id": 1,
+            "description": "Water plants",
+            "status": "done",
+            "created_at": "2024-10-18 13:55:37",
+            "updated_at": "2024-10-18 13:56:10"
+        },
+        {
+            "id": 2,
+            "description": "Walk the dinosaur",
+            "status": "todo",
+            "created_at": "2024-10-18 13:55:45",
+            "updated_at": "2024-10-18 13:55:45"
+        }
+    ]
+
+## Dependencies
+- **Python** 3.x
+
+
+Ensure all dependencies are listed in `requirements.txt` and installed using:
+
+    ```bash
+    pip install -r requirements.txt
