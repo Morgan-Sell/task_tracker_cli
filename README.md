@@ -8,9 +8,7 @@ A command-line interface (CLI) application for managing and tracking tasks. This
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Installation](#installation)
-  - [Features](#features)
-  - [Configuration](#configuration)
-  - [Dependencies](#dependencies)
+  - [License](#license)
 
 ## Introduction
 
@@ -115,5 +113,9 @@ Example `tracker.json`:
 
 Ensure all dependencies are listed in `requirements.txt` and installed using:
 
-    ```bash
+```
     pip install -r requirements.txt
+```
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
