@@ -4,11 +4,13 @@ A command-line interface (CLI) application for managing and tracking tasks. This
 
 ## Table of Contents
 
-- [Task Tracker CLI](#task-tracker-cli)
-  - [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Installation](#installation)
-  - [License](#license)
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Configuration](#configuration)
+- [Dependencies](#dependencies)
+- [License](#license)
 
 ## Introduction
 
